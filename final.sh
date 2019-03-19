@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Changes
 PS3='Escolha: '
 options=("Registo/Editar" "Alterar Dados" "Visualizar Dados" "Relatórios" "Gestão do(s) ficheiro(s) da Base de Dados" "Quit")
 select opt in "${options[@]}"
