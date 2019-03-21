@@ -1,10 +1,9 @@
 #!/bin/bash
 clear
-echo "1) Universidade"
-echo "2) Professor"
-echo "3) Estudante"
-echo "4) Disciplina"
-echo "5) Sair para o Menu Principal"
+echo "1) Backup"
+echo "2) Restaurar Backup"
+echo "3) Apagar Backup"
+echo "4) Sair para o Menu Principal"
 read opt
     case $opt in
         1)
@@ -14,8 +13,6 @@ read opt
         3)
             ;;
         4)
-            ;;
-        5)
             echo $'\n'
             clear
             ./mPrincipal.sh;;
@@ -23,5 +20,5 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mRegisto.sh;;
+            ./mBaseDeDados.sh;;
     esac
