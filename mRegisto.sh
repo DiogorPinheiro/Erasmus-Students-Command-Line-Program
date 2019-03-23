@@ -19,7 +19,7 @@ read opt
             echo $'\n'
             clear
             ./mPrincipal.sh;;
-        *) echo $'\n\nOpção inválida.\nPressione qualquer tecla para avançar.\n'
+        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear

@@ -1,0 +1,4 @@
+1000:Aharon Ben-David:2:2020:Universidade de Tel Aviv:Rebecca Bercow
+1001:Dimitri Penacova:1:2020:Universidade de Moscovo:Gopnik Cyka
+1002:Preto Fodido:1:2025:Universidade de Zimbabué:Fdp
+2020@Licenciatura@2@1@11105@Programação Orientada aos Objetos

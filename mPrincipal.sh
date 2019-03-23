@@ -15,7 +15,12 @@ read opt
         2)
             ;;
         3)
-            ;;
+            cat dados.txt
+            echo $'\n\nPressione [ENTER] para avançar.\n'
+            read rand
+            echo $'\n'
+            clear
+            ./mPrincipal.sh;;
         4)
             echo $'\n'
             clear
@@ -26,7 +31,7 @@ read opt
             ./mBaseDeDados.sh;;
         6)
             clear;;
-        *) echo $'\n\nOpção inválida.\nPressione qualquer tecla para avançar.\n'
+        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear
