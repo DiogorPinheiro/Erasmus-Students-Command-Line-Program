@@ -8,11 +8,29 @@ echo "5) Sair para o Menu Principal"
 read opt
     case $opt in
         1)
-            ;;
+            echo Lista de Universidades:
+            sed -n '/^#/p' dados.txt
+            echo $'\nPressione [ENTER] para avançar.\n'
+            read rand
+            echo $'\n'
+            clear
+            ./mRelatorios.sh;;
         2)
-            ;;
+            echo Lista de Disciplinas:
+            sed -n '/^%/p' dados.txt
+            echo $'\nPressione [ENTER] para avançar.\n'
+            read rand
+            echo $'\n'
+            clear
+            ./mRelatorios.sh;;
         3)
-            ;;
+            echo Lista de Alunos:
+            sed -n '/^!/p' dados.txt
+            echo $'\nPressione [ENTER] para avançar.\n'
+            read rand
+            echo $'\n'
+            clear
+            ./mRelatorios.sh;;
         4)
             ;;
         5)
