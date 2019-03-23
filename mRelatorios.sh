@@ -4,12 +4,13 @@ echo "1) Listar Universidades"
 echo "2) Listar Disciplinas"
 echo "3) Listar Alunos Erasmus"
 echo "4) Listar Disciplinas com Alunos Inscritos"
-echo "5) Sair para o Menu Principal"
+echo "5) Listar Professores"
+echo "6) Sair para o Menu Principal"
 read opt
     case $opt in
         1)
             echo Lista de Universidades:
-            sed -n '/^#/p' dados.txt
+            sed -n '/^:/p' dados.txt
             echo $'\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
@@ -34,6 +35,14 @@ read opt
         4)
             ;;
         5)
+            ;echo Lista de Professores:
+            sed -n '/^:/p' dados.txt
+            echo $'\nPressione [ENTER] para avançar.\n'
+            read rand
+            echo $'\n'
+            clear
+            ./mRelatorios.sh;;
+        6)
             echo $'\n'
             clear
             ./mPrincipal.sh;;
