@@ -15,9 +15,7 @@ read opt
             read Nome
             echo @$Nome >> dados.txt
             ./mRegisto.sh;;
-        3)  echo Coloque nome 'do' aluno:
-            read Nome
-            echo !$Nome >> dados.txt
+        3)  ./regEstudante.sh
             ./mRegisto.sh;;
         4)  echo Coloque nome da Disciplina:
             read Nome
