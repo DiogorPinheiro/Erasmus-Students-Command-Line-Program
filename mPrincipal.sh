@@ -5,7 +5,8 @@ echo "2) Alterar Dados"
 echo "3) Visualizar Dados"
 echo "4) Relatórios"
 echo "5) Gestão do(s) ficheiro(s) da Base de Dados"
-echo "6) Quit"
+echo "6) Estatísticas"
+echo "7) Quit"
 read opt
     case $opt in
         1)
@@ -29,7 +30,10 @@ read opt
             echo $'\n'
             clear
             ./mBaseDeDados.sh;;
-        6)
+
+        6) ;;
+
+        7)
             clear;;
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
