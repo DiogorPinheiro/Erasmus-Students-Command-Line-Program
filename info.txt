@@ -1,0 +1,35 @@
+Caracteres especiais
+    : -> Estudantes [10000,19999]
+    @ -> Universidade [20000,29999]
+    # -> Disciplina [30000,39999]
+    § -> Professor [40000,49999]
+
+Input Dados
+    Estudantes -> ID : Nome : Universidade : Professor Responsável : Semestre : Ano : Cadeira 1 : Cadeira 2 : ... : Cadeira n (n é definido pelo utilizador dentro de 8 possíveis)
+    Universidade -> ID @ Nome Instituição @ País
+    Professor -> ID § Nome 
+    Disciplina -> ID # Nome # Semestre 
+
+
+Nota:
+    Menu Estudantes 
+            1) Escolha Nome : __________________
+            2) Universidade :
+                2.1) Mostrar Lista com Universidades registadas
+                2.2) Escolher ID
+                2.2.1) Caso não esteja na lista -> Aviso "Universidade não registada"
+            2) Professor :
+                2.1) Mostrar Lista com Professores registados
+                2.2) Escolher ID
+                2.2.1) Caso não esteja na lista -> Aviso "Professor não registado"
+            3) Escolher Semestre : ______
+            4) Ano : ______
+            5) Cadeiras disponíveis nesse semestre:
+                5.1) Mostrar Lista ( Ficar em ecrâ)
+            6) Quantas cadeiras pretende fazer : ______ -> Resultado colocar em variável n
+            7) Escolha as cadeiras  
+                7.1) Ciclo de 0 até n-1
+                7.2) "Escolha ID da cadeira"
+                    7.2.1) Se escolher uma já previamente selecionada, mostrar aviso "Cadeira já selecionada"
+                    7.2.2) Se escolher uma que não está na lista, mostrar aviso "Cadeira não disponível"
+                7.3) "Você escolheu as cadeiras" : Mostrar lista
