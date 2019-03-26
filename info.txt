@@ -1,19 +1,20 @@
 Caracteres especiais
-    : -> Estudantes [10000,19999]
-    @ -> Universidade [20000,29999]
-    # -> Disciplina [30000,39999]
-    § -> Professor [40000,49999]
+    : -> Estudantes -> ID [10000,19999]
+    @ -> Universidade -> ID [20000,29999]
+    # -> Disciplina -> ID  [30000,39999]
+    , -> Professor -> ID [40000,49999]
 
 Input Dados
     Estudantes -> ID : Nome : Universidade : Professor Responsável : Semestre : Ano : Cadeira 1 : Cadeira 2 : ... : Cadeira n (n é definido pelo utilizador dentro de 8 possíveis)
     Universidade -> ID @ Nome Instituição @ País
-    Professor -> ID § Nome 
+    Professor -> ID , Nome 
     Disciplina -> ID # Nome # Semestre 
 
 
 Nota:
     Menu Estudantes 
-            1) Escolha Nome : __________________
+            * Atribuir ID (anterior + 1)
+            1) Nome : __________________
             2) Universidade :
                 2.1) Mostrar Lista com Universidades registadas
                 2.2) Escolher ID
@@ -33,3 +34,21 @@ Nota:
                     7.2.1) Se escolher uma já previamente selecionada, mostrar aviso "Cadeira já selecionada"
                     7.2.2) Se escolher uma que não está na lista, mostrar aviso "Cadeira não disponível"
                 7.3) "Você escolheu as cadeiras" : Mostrar lista
+    
+    Menu Universidade   
+            * Atribuir ID (anterior + 1)
+            1) Nome : __________________
+            2) País : __________________
+    
+    Menu Professor
+            * Atribuir ID (anterior + 1)
+            1) Nome : __________________
+
+    Menu Disciplina
+            * Atribuir ID (anterior + 1)
+            1) Nome : __________________
+            2) Semestre : _____
+
+    
+
+
