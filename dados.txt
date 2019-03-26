@@ -1,9 +1,9 @@
 10000@Universidade de Tel Aviv@Israel
 10001@Universidade Beira Interior@Portugal
-20000:Dimitri Dimitrov:10003:40000:2:2020:1235:1236:1237:1238
 10002@Universidade Madrid@Espanha
 10003@Universidade Moscovo@Russia
-20001:Sergio Ramos:10002:40001:1:2019:1236:1239:1240
+20000:Dimitri Dimitrov:Universidade Moscovo:Igor Igorov:2:2020:ES:SO
+20001:David Sales:Universidade Beira Interior:Maria Fuentes:2:2020:SO:Fisica:Matemática Computacional 2
 30000#Teoria da Computação#2
 30001#Lógica Computacional#1
 30002#POO#1
@@ -18,11 +18,8 @@
 30011#SO#2
 30012#ES#2
 30013#Fisica#2
-40001§Maria Fuentes
 30014#Algebra#1
 30015#Arquitetura Computadores 1#1
 30016#Estatistica#1
-40000§Igor Igorov
-
-
-
+40000,Igor Igorov
+40001,Maria Fuentes
