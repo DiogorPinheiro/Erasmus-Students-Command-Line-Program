@@ -61,6 +61,10 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' $dados
                 echo $'\n'
                 ./edEstudante $cod;;
+            
+            7)
+                exit
+
             *)  echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
                 read rand
                 echo $'\n'

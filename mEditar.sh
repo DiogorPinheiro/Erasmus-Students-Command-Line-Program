@@ -9,15 +9,15 @@ echo "5) Quit"
 read opt
     case $opt in
         1)  
+            clear
             if grep : $dados ;
-            then
-                clear     
+            then   
                 echo $'\nSelecione o aluno que pretende editar, introduzindo o código correspondente:\n'
                 read cod
                     while [ $cod -gt 29999 ] || [ $cod -lt 20000 ] || [ "$(grep $cod $dados | cut -d : -f 1 )" -eq 1 ] ;
                     do
                         clear
-                        grep @ $dados
+                        grep : $dados
                         echo $'\nEscolha um código existente.\n'
                         read cod
                     done

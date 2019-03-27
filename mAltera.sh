@@ -10,7 +10,7 @@ read opt
         2)  ./mEliminar.sh
             ./mAltera.sh;;
         3)
-            clear;;
+            ./mPrincipal.sh;;
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
