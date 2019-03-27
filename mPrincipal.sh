@@ -13,7 +13,7 @@ read opt
             echo $'\n'
             clear
             ./mRegisto.sh;;
-        2)
+        2)  ./mAltera.sh
             ;;
         3)
             cat dados.txt
