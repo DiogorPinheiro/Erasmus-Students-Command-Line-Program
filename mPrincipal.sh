@@ -9,12 +9,14 @@ echo "6) Estatísticas"
 echo "7) Quit"
 read opt
     case $opt in
-        1)
+        1)  
             echo $'\n'
             clear
             ./mRegisto.sh;;
-        2)  ./mAltera.sh
-            ;;
+        2)  
+            echo $'\n'
+            clear
+            ./mAltera.sh;;
         3)
             cat dados.txt
             echo $'\n\nPressione [ENTER] para avançar.\n'
@@ -31,7 +33,9 @@ read opt
             clear
             ./mBaseDeDados.sh;;
 
-        6) ;;
+        6)  echo $'\n'
+            clear
+            ./mEstatisticas.sh;;
 
         7)
             clear;;
