@@ -2,7 +2,7 @@
 clear
 echo "1) Editar"
 echo "2) Eliminar"
-echo "3) Quit"
+echo "3) Voltar"
 read opt
     case $opt in
         1)  ./mEditar.sh
@@ -15,5 +15,5 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mPrincipal.sh;;
+            ./mAltera.sh;;
     esac

@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 dados="dados.txt"
 if grep : $dados
 then
