@@ -16,6 +16,7 @@ read opt
         2)
             ;;
         3)
+            clear
             cat dados.txt
             echo $'\n\nPressione [ENTER] para avançar.\n'
             read rand

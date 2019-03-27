@@ -1,39 +1,40 @@
 #!/bin/bash
 clear
 id=0
+dados="dados.txt"
     echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+c.'
     echo 'Insira o nome do aluno: '
     read nome
 
-    while grep "$nome" dados.txt ;  # Verificar se nome colocado já existe na base de dados
+    while grep "$nome" $dados ;  # Verificar se nome colocado já existe na base de dados
     do
         clear
         echo $'Aluno já se apresenta na base de dados. Introduza um novo nome'
         read nome
     done
 
-    if grep : dados.txt     # Atribuir ID ( Último ID registado + 1)
+    if grep : $dados     # Atribuir ID ( Último ID registado + 1)
     then
         clear
-        id=$(grep : dados.txt | tail -1 | cut -d : -f 1)
+        id=$(grep : $dados | tail -1 | cut -d : -f 1)
         id=$(($id + 1)) 
     else
         id=20000
     fi
     clear
     echo $'Escolha o código de uma das universidades.\n'
-    if grep @ dados.txt;
+    if grep @ $dados;
     then
             echo $'\nSe não pretender nenhuma destas e/ou querer criar uma nova pressione -1 a qualquer altura desta parte.\n'
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod dados.txt | cut -d @ -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod $dados | cut -d @ -f 1 )" -eq 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
                 then
                     ./regUniversidade.sh
                 fi
-                grep @ dados.txt
+                grep @ $dados
                 echo $'\nEscolha um código existente.\n'
                 read cod
             done
@@ -45,16 +46,16 @@ id=0
         if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
         then
             ./regUniversidade.sh
-            grep @ dados.txt
+            grep @ $dados
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod dados.txt | cut -d @ -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod $dados | cut -d @ -f 1 )" -eq 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
                 then
                     ./regUniversidade.sh
                 fi
-                grep @ dados.txt
+                grep @ $dados
                 echo $'\nEscolha um código existente.'
                 read cod
             done
@@ -64,22 +65,22 @@ id=0
             exit
         fi
     fi
-    universidade=$(grep $cod dados.txt | cut -d @ -f 2)
+    universidade=$(grep $cod $dados | cut -d @ -f 2)
 
     clear
     echo $'\nEscolha o código do professor desejado.\n'
-    if grep , dados.txt;
+    if grep , $dados;
     then    
             echo $'\nCaso não exista o professor desejado pressione -1 para criar.\n'
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod dados.txt | cut -d , -f 1)" -eq 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1)" -eq 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
                 then
                     ./regUniversidade.sh
                 fi
-                grep , dados.txt
+                grep , $dados
                 echo $'\nEscolha um código existente.\n'
                 read cod
             done
@@ -90,16 +91,16 @@ id=0
         if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
         then
             ./regProfessor.sh
-            grep , dados.txt
+            grep , $dados
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod dados.txt | cut -d , -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1 )" -eq 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
                 then
                     ./regProfessor.sh
                 fi
-                grep , dados.txt
+                grep , $dados
                 echo $'\nEscolha um código existente.'
                 read cod
             done
@@ -109,7 +110,7 @@ id=0
             exit
         fi
     fi
-    professor=$(grep $cod dados.txt | cut -d , -f 2)
+    professor=$(grep $cod $dados | cut -d , -f 2)
 
     clear
     echo $'\nEm que semestre vai frequentar a UBI? [1/2]\n'
@@ -121,8 +122,8 @@ id=0
         read sem
     done
 
-    #tempS=$(grep $nome dados.txt | cut -d : -f 5)
-    #tempA=$(grep $nome dados.txt | cut -d : -f 6)
+    #tempS=$(grep $nome $dados | cut -d : -f 5)
+    #tempA=$(grep $nome $dados | cut -d : -f 6)
     #if [ $tempS -eq $sem ] && [ $tempA -eq $ano ]
     #then
     #    echo $'\nAluno já se encontra registado no mesmo ano e semestre'
@@ -155,11 +156,11 @@ id=0
     do
         clear
         flag=-1
-        if grep '#' dados.txt;
+        if grep '#' $dados;
         then
             clear
             echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
-            grep '#' dados.txt
+            grep '#' $dados
             read cod
             while [ $flag -lt 0 ]
             do
@@ -168,16 +169,16 @@ id=0
                     clear
                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar."
                 fi
-                while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod dados.txt | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] ;
+                while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] ;
                 do
                     if [ $cod -eq -1 ]
                     then
                         ./regDisciplina.sh
                     fi
-                    grep "#" dados.txt
+                    grep "#" $dados
                     echo $'\nEscolha um código existente.'
                     read cod
-                    temp=$(grep $cod dados.txt | cut -d '#' -f 3)
+                    temp=$(grep $cod $dados | cut -d '#' -f 3)
                     if [ $temp -ne $sem ]
                     then
                         flag=-2
@@ -186,7 +187,7 @@ id=0
                     fi
                     clear
                 done
-                temp=$(grep $cod dados.txt | cut -d '#' -f 3)
+                temp=$(grep $cod $dados | cut -d '#' -f 3)
                 if [ $temp -ne $sem ]
                 then
                     flag=-2
@@ -202,7 +203,7 @@ id=0
             then
                 ./regDisciplina.sh
                 echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
-                grep '#' dados.txt
+                grep '#' $dados
                 read cod
                 while [ $flag -lt 0 ]
                 do
@@ -212,7 +213,7 @@ id=0
                         echo $'\nEscolha uma disciplina associada ao semestre que deseja frequentar.'
                     fi
 
-                    while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod dados.txt | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] ;
+                    while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] ;
                     do
 
                         if [ $cod -eq -1 ]
@@ -220,12 +221,12 @@ id=0
                             ./regDisciplina.sh
                         fi
                         clear
-                        grep "#" dados.txt
+                        grep "#" $dados
                         echo $'\nEscolha um código existente.'
                         read cod
                     done
 
-                    temp=$(grep $cod dados.txt | cut -d '#' -f 3)
+                    temp=$(grep $cod $dados | cut -d '#' -f 3)
                     
                     if [ $temp -ne $sem ]
                     then
@@ -243,13 +244,13 @@ id=0
         fi
         if [ $nDisc -ne 1 ]
         then
-            disciplinas=":$(grep $cod dados.txt | cut -d '#' -f 2)${disciplinas}"
+            disciplinas=":$(grep $cod $dados | cut -d '#' -f 2)${disciplinas}"
         else
-            disciplinas="$(grep $cod dados.txt | cut -d '#' -f 2)${disciplinas}"
+            disciplinas="$(grep $cod $dados | cut -d '#' -f 2)${disciplinas}"
         fi
         nDisc=$(($nDisc-1))
     done
 
-    echo "$id:$nome:$universidade:$professor:$sem:$ano:$disciplinas" >> dados.txt
-    sort -n dados.txt > tmp.txt
-    mv tmp.txt dados.txt
+    echo "$id:$nome:$universidade:$professor:$sem:$ano:$disciplinas" >> $dados
+    sort -n $dados > tmp.txt
+    mv tmp.txt $dados
