@@ -4,7 +4,8 @@ dados="dados.txt"
 cod=$1
 nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apresentar como, para mais tarde, substituir pelo novo com o sed
 
-    echo $'Se, a qualquer altura, pretender sair do programa, pressione CTRL+c.\nEstá a editar o aluno '$nomeAntigo'.\n'
+    echo $'Se, a qualquer altura, pretender sair do programa, pressione CTRL+c.\nEstá a editar o aluno '$nomeAntigo'.'
+    echo ""
     echo "1) Editar nome"
     echo "2) Editar universidade"
     echo "3) Editar professor responsável"
@@ -80,7 +81,6 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     
                     clear
                     echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
-                    echo "$newvalue"
                     read nDisc
                     while [ $nDisc -gt 8 ] || [ $nDisc -lt 1 ]
                     do
@@ -95,9 +95,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                         clear
                         flag=-1             #flag associada ao semestre da disciplina que o utilizador escolheu, esta altera entre 0 (disciplina corresponde ao mesmo semestre que o utilizador pretende frequentar), -1 (valor inicial para entrar no ciclo) e -2 (disciplina não corresponde ao mesmo semestre que o utilizador pretende frequentar) 
                         flagD=-1            #flag associada à disciplina que está a ser adicionada, para certificar que não é repetida. Entra a -1, 0 corresponde a não repetida e -2 corresponde a repetida
-                        if grep '#' $dados;
-                        then
-                            clear
+                        
                             echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
                             grep '#' $dados
                             read codDisc
@@ -172,98 +170,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     flag=0
                                 fi
                             done
-                        else
-                            clear
-                            echo $'\nNão existem disciplinas no ficheiro, deseja criar um registo? [y/n]\nOBS: Podem ser criadas mais disciplinas se introduzir -1'
-                            read ans
-                            if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
-                            then
-                                ./regDisciplina.sh
-                                echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
-                                grep '#' $dados
-                                read codDisc
-                                while [ $flag -lt 0 ] || [ $flagD -lt 0 ] ;
-                                do
-                                    if [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
-                                    then
-                                        clear
-                                        echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
-                                    fi
-                                    while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep $codDisc $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ];
-                                    do
-
-                                        if [ $codDisc -eq -1 ]
-                                        then
-                                            ./regDisciplina.sh
-                                        fi
-                                        clear
-                                        grep "#" $dados
-                                        echo $'\nEscolha um código existente.'
-                                        read codDisc
-                                        for i in "${!verificacao[@]}" ;
-                                        do
-                                            if [ $codDisc -eq ${verificacao[$i]} ]
-                                            then
-                                                flagD=-2
-                                                i=-1
-                                                break
-                                            fi
-                                        done
-                                        i=$(($i+1))
-                                        if [ ${#verificacao[@]} -eq 0 ]
-                                        then
-                                            flagD=0
-                                        else
-                                            if [ $i -eq ${#verificacao[@]} ]
-                                            then
-                                                flagD=0 
-                                            fi
-                                        fi
-                                        temp=$(grep $codDisc $dados | cut -d '#' -f 3)
-                                        if [ $temp -ne $sem ]
-                                        then
-                                            flag=-2
-                                        else
-                                            flag=0
-                                        fi
-                                        clear
-                                    done
-
-                                    for i in "${!verificacao[@]}" ;
-                                    do
-                                        if [ $codDisc -eq ${verificacao[$i]} ]
-                                        then
-                                            flagD=-2
-                                            i=-1
-                                            break
-                                        fi
-                                    done
-                                    i=$(($i+1))
-                                    if [ ${#verificacao[@]} -eq 0 ]
-                                    then
-                                        flagD=0
-                                    else
-                                        if [ $i -eq ${#verificacao[@]} ]
-                                        then
-                                            flagD=0 
-                                        fi
-                                    fi
-                                                    
-                                    temp=$(grep $codDisc $dados | cut -d '#' -f 3)
-                                    if [ $temp -ne $sem ]
-                                    then
-                                        flag=-2
-                                    else
-                                        flag=0
-                                    fi
-
-                                done
-                            else
-                                echo $'\nPressione [ENTER] para continuar.\n\n'
-                                read rand
-                                exit
-                            fi
-                        fi
+                        
                         verificacao+=($codDisc)
                         if [ $nDisc -ne 1 ]
                         then
@@ -283,9 +190,123 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     ./edEstudante.sh $cod
                 fi
                 ;;
-            5)  ;;
+            5)  
+                ;;
 
-            6)  ;;
+            6)  clear
+                
+                    universidade=$(grep $cod $dados | cut -d : -f 3)
+                    ano=$(grep $cod $dados | cut -d : -f 6)
+                    sem=$(grep $cod $dados | cut -d : -f 5)
+                    newvalue="${cod}:${nomeAntigo}:${universidade}:${sem}:${ano}:"
+                    
+                    clear
+                    echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
+                    read nDisc
+                    while [ $nDisc -gt 8 ] || [ $nDisc -lt 1 ]
+                    do
+                        clear
+                        echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
+                        read nDisc
+                    done
+
+                    verificacao=() #array que vai armazenar o código de cada disciplina para não adicionar disciplinas repetidas no mesmo registo
+                    while [ $nDisc -ne 0 ]
+                    do
+                        clear
+                        flag=-1             #flag associada ao semestre da disciplina que o utilizador escolheu, esta altera entre 0 (disciplina corresponde ao mesmo semestre que o utilizador pretende frequentar), -1 (valor inicial para entrar no ciclo) e -2 (disciplina não corresponde ao mesmo semestre que o utilizador pretende frequentar) 
+                        flagD=-1            #flag associada à disciplina que está a ser adicionada, para certificar que não é repetida. Entra a -1, 0 corresponde a não repetida e -2 corresponde a repetida
+                        
+                            echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
+                            grep '#' $dados
+                            read codDisc
+                            while [ $flag -lt 0 ] || [ $flagD -lt 0 ] ;
+                            do
+                                if [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                then
+                                    clear
+                                    echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
+                                fi
+                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep $codDisc $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                do
+                                    if [ $codDisc -eq -1 ]
+                                    then
+                                        ./regDisciplina.sh
+                                    fi
+                                    grep "#" $dados
+                                    echo $'\nEscolha um código existente e de uma disciplina não repetida.'
+                                    read codDisc
+                                    for i in "${!verificacao[@]}" ;
+                                    do
+                                        if [ $codDisc -eq ${verificacao[$i]} ]
+                                        then
+                                            flagD=-2
+                                            i=-1
+                                            break
+                                        fi
+                                    done
+                                    i=$(($i+1))
+                                    if [ ${#verificacao[@]} -eq 0 ]
+                                    then
+                                        flagD=0
+                                    else
+                                        if [ $i -eq ${#verificacao[@]} ]
+                                        then
+                                            flagD=0 
+                                        fi
+                                    fi
+                                    temp=$(grep $codDisc $dados | cut -d '#' -f 3)
+                                    if [ $temp -ne $sem ]
+                                    then
+                                        flag=-2
+                                    else
+                                        flag=0
+                                    fi
+                                    clear
+                                done
+                                for i in "${!verificacao[@]}" ;
+                                do
+                                    if [ $codDisc -eq ${verificacao[$i]} ]
+                                    then
+                                        flagD=-2
+                                        i=-1
+                                        break
+                                    fi
+                                done
+                                i=$(($i+1))
+                                if [ ${#verificacao[@]} -eq 0 ]
+                                then
+                                    flagD=0
+                                else
+                                    if [ $i -eq ${#verificacao[@]} ]
+                                    then
+                                        flagD=0 
+                                    fi
+                                fi
+                                temp=$(grep $codDisc $dados | cut -d '#' -f 3)
+                                if [ $temp -ne $sem ]
+                                then
+                                    flag=-2
+                                else
+                                    flag=0
+                                fi
+                            done
+                        
+                        verificacao+=($codDisc)
+                        if [ $nDisc -ne 1 ]
+                        then
+                            disciplinas=":$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"
+                        else
+                            disciplinas="$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"
+                        fi
+                        nDisc=$(($nDisc-1))
+                    done
+                    newvalue="${newvalue}${disciplinas}"
+                    grep -v $cod $dados > tmp.txt
+                    echo "$newvalue" >> tmp.txt
+                    sort -n tmp.txt > $dados
+                    rm tmp.txt
+                ;;
 
             7)  
                 exit;;
