@@ -13,7 +13,7 @@ dados="dados.txt"
         read nome
     done
 
-    if grep : $dados     # Atribuir ID ( Último ID registado + 1)
+    if grep : $dados ;   # Atribuir ID ( Último ID registado + 1)
     then
         clear
         id=$(grep : $dados | tail -1 | cut -d : -f 1)

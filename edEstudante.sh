@@ -71,18 +71,19 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     universidade=$(grep $cod $dados | cut -d : -f 3)
                     ano=$(grep $cod $dados | cut -d : -f 6)
                     sem=$(grep $cod $dados | cut -d : -f 5)
+                    professor=$(grep $cod $dados | cut -d : -f 4)
                     if [ $sem -eq 1 ]
                     then
                         sem=2
                     else
                         sem=1
                     fi
-                    newvalue="${cod}:${nomeAntigo}:${universidade}:${sem}:${ano}:"
+                    newvalue="${cod}:${nomeAntigo}:${universidade}:${professor}:${sem}:${ano}:"
                     
                     clear
                     echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
                     read nDisc
-                    while [ $nDisc -gt 8 ] || [ $nDisc -lt 1 ]
+                    while [ $nDisc -gt 8 ] || [ $nDisc -lt 1 ] ;
                     do
                         clear
                         echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
@@ -167,7 +168,6 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                 if [ $temp -ne $sem ]
                                 then
                                     flag=-2
-                                    echo "1"
                                 else
                                     flag=0
                                 fi
@@ -193,6 +193,27 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 fi
                 ;;
             5)  
+                clear
+                echo $'\nEm que ano vai frequentar a UBI?\n'
+                read ano
+                anoAtual=$(date +%Y)
+                while [ $anoAtual -gt $ano ]
+                do
+                    clear
+                    echo $'\nEscolha um ano válido, ou seja, maior ou igual a '
+                    echo "$anoAtual"
+                    echo $'\n'
+                    read ano
+                done
+                temp=$(grep $cod $dados | cut -d : -f 6)
+                rm tmp.txt
+                grep $cod $dados > tmp.txt | sed -i 's/'$temp'/'$ano'/g' tmp.txt
+                grep -v $cod $dados > tmp1.txt
+                cat tmp.txt >> tmp1.txt
+                sort -n tmp1.txt > $dados
+                rm tmp1.txt
+                rm tmp.txt
+                clear
                 ;;
 
             6)  clear
@@ -200,7 +221,8 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     universidade=$(grep $cod $dados | cut -d : -f 3)
                     ano=$(grep $cod $dados | cut -d : -f 6)
                     sem=$(grep $cod $dados | cut -d : -f 5)
-                    newvalue="${cod}:${nomeAntigo}:${universidade}:${sem}:${ano}:"
+                    professor=$(grep $cod $dados | cut -d : -f 4)
+                    newvalue="${cod}:${nomeAntigo}:${universidade}:${professor}:${sem}:${ano}:"
                     
                     clear
                     echo $'\nSó pode frequentar, no máximo, 8 disciplinas por semestre. Quantas deseja frequentar?\n'
