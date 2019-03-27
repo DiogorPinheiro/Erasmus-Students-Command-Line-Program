@@ -110,6 +110,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                 do
                                     if [ $codDisc -eq -1 ]
                                     then
+                                        echo "1"
                                         ./regDisciplina.sh
                                     fi
                                     grep "#" $dados
@@ -166,6 +167,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                 if [ $temp -ne $sem ]
                                 then
                                     flag=-2
+                                    echo "1"
                                 else
                                     flag=0
                                 fi
