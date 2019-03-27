@@ -78,7 +78,7 @@ dados="dados.txt"
                 clear
                 if [ $cod -eq -1 ]
                 then
-                    ./regUniversidade.sh
+                    ./regProfessor.sh
                 fi
                 grep , $dados
                 echo $'\nEscolha um código existente.\n'

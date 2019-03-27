@@ -36,7 +36,7 @@ read opt
 
         7)
             clear;;
-        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
+        *)  echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear
