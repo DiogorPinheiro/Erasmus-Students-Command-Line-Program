@@ -61,7 +61,33 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' $dados
                 echo $'\n'
                 ./edEstudante $cod;;
-            
+
+            4)  clear
+                echo $'\nAVISO! Se alterar o semestre associado a este registo vai perder todas as disciplinas associadas ao mesmo e vai ter que adicionar novas. Continuar? [y/n]'
+                read ans
+                if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
+                then
+                    universidade=$(grep $cod $dados | cut -d @ -f 3)
+                    ano=$(grep $cod $dados | cut -d @ -f 6)
+                    sem=$(grep $cod $dados | cut -d @ -f 5)
+                    if [ $sem -eq 1 ]
+                    then
+                        sem=2
+                    else
+                        sem=1
+                    fi
+                    newvalue="${cod}:${nomeAntigo}:${universidade}:${sem}:${ano}:"
+                    
+                    
+                else
+                    clear
+                    ./edEstudante.sh $cod;;
+                fi
+
+            5)
+
+            6)
+
             7)
                 exit
 
