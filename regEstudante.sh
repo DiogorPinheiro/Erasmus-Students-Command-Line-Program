@@ -251,6 +251,5 @@ id=0
     done
 
     echo "$id:$nome:$universidade:$professor:$sem:$ano:$disciplinas" >> dados.txt
-    cat dados.txt > dados.bak
     sort -n dados.txt > tmp.txt
     mv tmp.txt dados.txt
