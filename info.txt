@@ -1,6 +1,6 @@
 Caracteres especiais
-    : -> Estudantes -> ID [10000,19999]
-    @ -> Universidade -> ID [20000,29999]
+    : -> Estudantes -> ID [20000,29999]
+    @ -> Universidade -> ID [10000,19999]
     # -> Disciplina -> ID  [30000,39999]
     , -> Professor -> ID [40000,49999]
 

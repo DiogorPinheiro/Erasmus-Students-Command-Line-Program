@@ -5,18 +5,18 @@ id=0
     echo 'Insira o nome do aluno: '
     read nome
 
-    while grep "$nome" dados.txt ;
+    while grep "$nome" dados.txt ;  # Verificar se nome colocado já existe na base de dados
     do
         clear
         echo $'Aluno já se apresenta na base de dados. Introduza um novo nome'
         read nome
     done
 
-    if grep : dados.txt
+    if grep : dados.txt     # Atribuir ID ( Último ID registado + 1)
     then
         clear
         id=$(grep : dados.txt | tail -1 | cut -d : -f 1)
-        id=$(($id + 1))
+        id=$(($id + 1)) 
     else
         id=20000
     fi

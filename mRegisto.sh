@@ -7,21 +7,14 @@ echo "4) Disciplina"
 echo "5) Sair para o Menu Principal"
 read opt
     case $opt in
-        1)  echo Coloque nome da universidade:
-            read Nome
-            echo :$Nome >> dados.txt
+        1)  ./regUniversidade.sh
             ./mRegisto.sh;;
-        2)  echo Coloque nome da professor:
-            read Nome
-            echo @$Nome >> dados.txt
+        2)  ./regProfessor.sh
             ./mRegisto.sh;;
         3)  ./regEstudante.sh
             ./mRegisto.sh;;
-        4)  echo Coloque nome da Disciplina:
-            read Nome
-            echo %$Nome >> dados.txt
-            ./mRegisto.sh;;
-            
+        4)  ./mDisciplina.sh
+            ./mRegisto.sh;;    
         5)
             echo $'\n'
             clear
