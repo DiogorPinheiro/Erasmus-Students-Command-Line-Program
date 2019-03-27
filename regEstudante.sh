@@ -1,9 +1,16 @@
 #!/bin/bash
 clear
 id=0
-echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+d.'
-echo 'Insira o nome do aluno: '
-read nome
+    echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+d.'
+    echo 'Insira o nome do aluno: '
+    read nome
+
+    while grep "$nome" dados.txt ;
+    do
+        clear
+        echo $'Aluno já se apresenta na base de dados. Introduza um novo nome'
+        read nome
+    done
 
     if grep : dados.txt
     then
@@ -14,7 +21,7 @@ read nome
         id=20000
     fi
     clear
-    echo $'\nEscolha o código de uma das universidades.\n'
+    echo $'Escolha o código de uma das universidades.\n'
     if grep @ dados.txt;
     then
             echo $'\nSe não pretender nenhuma destas e/ou querer criar uma nova pressione -1 a qualquer altura desta parte.\n'
@@ -242,10 +249,6 @@ read nome
         fi
         nDisc=$(($nDisc-1))
     done
-
-    echo "$id:$nome:$universidade:$professor:$sem:$ano:$disciplinas"
-
-    read rand
 
     echo "$id:$nome:$universidade:$professor:$sem:$ano:$disciplinas" >> dados.txt
     cat dados.txt > dados.bak
