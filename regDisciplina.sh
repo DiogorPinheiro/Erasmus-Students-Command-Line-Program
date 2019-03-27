@@ -15,7 +15,7 @@ id=0
     if grep '#' dados.txt     # Atribuir ID ( Último ID registado + 1)
     then
         clear
-        id=$(grep '#' dados.txt | tail -1 | cut -d : -f 1)
+        id=$(grep '#' dados.txt | tail -1 | cut -d '#' -f 1)
         id=$(($id + 1)) 
     else
         id=30000

@@ -2,6 +2,7 @@
 10001@Universidade Beira Interior@Portugal
 10002@Universidade Madrid@Espanha
 10003@Universidade Moscovo@Russia
+10004@Gogogo@Moscovo
 20000:Dimitri Dimitrov:Universidade Moscovo:Igor Igorov:2:2020:ES:SO
 20001:David Sales:Universidade Beira Interior:Maria Fuentes:2:2020:SO:Fisica:Matemática Computacional 2
 20002:Dingo:Universidade Beira Interior:Maria Fuentes:1:2019:AED:POO:Lógica Computacional
