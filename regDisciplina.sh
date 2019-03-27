@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 id=0
-    echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+d.'
+    echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+c.'
     echo 'Insira nome da disciplina'
     read nome
 
