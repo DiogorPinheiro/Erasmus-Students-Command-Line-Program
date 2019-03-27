@@ -8,18 +8,18 @@ echo "5) Quit"
 read opt
     case $opt in
         1)  ./elEstudante.sh
-            ./mEditar.sh;;
+            ./mEliminar.sh;;
         2)  ./elProfessor.sh
-            ./mEditar.sh;;
+            ./mEliminar.sh;;
         3)  ./elUniversidade.sh
-            ./mEditar.sh;;
+            ./mEliminar.sh;;
         4)  ./elDisciplina.sh 
-            ./mEditar.sh;;
+            ./mEliminar.sh;;
         5)
             clear;;
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear
-            ./mPrincipal.sh;;
+            ./mEliminar.sh;;
     esac
