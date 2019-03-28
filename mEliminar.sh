@@ -4,7 +4,7 @@ echo "1) Estudante"
 echo "2) Professor"
 echo "3) Universidade"
 echo "4) Disciplina"
-echo "5) Quit"
+echo "5) Voltar"
 read opt
     case $opt in
         1)  ./elEstudante.sh
@@ -17,7 +17,7 @@ read opt
             ./mEliminar.sh;;
         5)
             clear;;
-        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
+        *)  echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear

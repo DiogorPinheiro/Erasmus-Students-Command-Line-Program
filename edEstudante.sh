@@ -57,10 +57,15 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     read Cprof
                 done
 
-                nome=$(grep $Cprof $dados | cut -d , -f 3)
-                nomeAntigo=$(grep $cod $dados | cut -d , -f 3)
-                sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' $dados
-                echo $'\n'
+                nome=$(grep $Cprof $dados | cut -d , -f 2)
+                nomeAntigo=$(grep $cod $dados | cut -d , -f 2)
+                rm tmp.txt
+                grep $cod $dados > tmp.txt | sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' tmp.txt
+                grep -v $cod $dados > tmp1.txt
+                cat tmp.txt >> tmp1.txt
+                sort -n tmp1.txt > $dados
+                rm tmp1.txt
+                rm tmp.txt
                 ./edEstudante $cod;;
 
             4)  clear
