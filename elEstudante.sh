@@ -1,10 +1,10 @@
 #!/bin/bash
 dados="dados.txt"
-if grep : $dados
+if grep : $dados ;
 then
     echo "Qual deseja eliminar?"
     read numEstEl
-    while [ $numEstEl -lt 20000 ] || [ $numEstEl -gt 29999 ] || [ "$(grep -c $numProfEl $dados)" -lt 1 ] ;
+    while [ $numEstEl -lt 20000 ] || [ $numEstEl -gt 29999 ] || [ "$(grep -c $numEstEl $dados)" -lt 1 ] ;
     do 
         echo "Este numero não é possivel, tente de novo:"
         read numEstEl

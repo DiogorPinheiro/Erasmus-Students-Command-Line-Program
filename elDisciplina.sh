@@ -1,6 +1,6 @@
 #!/bin/bash
 dados="dados.txt"
-if grep , $dados ;
+if grep '#' $dados ;
 then
     echo "Qual deseja eliminar?"
     read numDiscEl
