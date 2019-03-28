@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+echo "MENU ESTATÍSTICAS"
 echo "1) Alunos"
 echo "2) Professores"
 echo "3) Universidades"
@@ -21,5 +22,5 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mPrincipal.sh;;
+            ./mEstatisticas.sh;;
     esac
