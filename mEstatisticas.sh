@@ -1,6 +1,5 @@
 #!/bin/bash
 clear
-echo "MENU ESTATÍSTICAS"
 echo "1) Alunos"
 echo "2) Professores"
 echo "3) Universidades"
@@ -18,7 +17,7 @@ read opt
             ./mEstatisticas.sh;;
         5)
             clear;;
-        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
+        *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'       # Evitar outros inputs não existentes no menu
             read rand
             echo $'\n'
             clear
