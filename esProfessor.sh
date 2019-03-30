@@ -22,7 +22,7 @@ read opt
             grep , $dados
             echo $'\nColoque ID do Professor'
             read ID
-            if [ grep $ID $dados -eq -1 ] || [ $ID -gt 49999 ] || [ $ID -lt 40000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
+            if [ "$(grep -c $ID $dados)" -ne 1 ] || [ $ID -gt 49999 ] || [ $ID -lt 40000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
             then
                 clear
                 echo "Erro!! Professor não encontrado!"

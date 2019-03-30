@@ -15,10 +15,11 @@ read opt
             clear
             ./esUniversidade.sh;;
         2)  clear
+            grep @ $dados
             echo 'Coloque ID da Universidade'
             read ID
             clear
-            if [ grep $ID $dados -eq -1 ] || [ $ID -gt 19999 ] || [ $ID -lt 10000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
+            if [ "$(grep -c $ID $dados)" -ne 1 ] || [ $ID -gt 19999 ] || [ $ID -lt 10000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
             then
                 echo "Erro!! Universidade Inexistente"
             else
@@ -32,8 +33,7 @@ read opt
             echo $'\n'
             clear
             ./esUniversidade.sh;;
-        3)  clear
-            ./mEstatisticas.sh;;
+        3)  ./mEstatisticas.sh;;
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'           # Evitar outros inputs não existentes no menu
             read rand
             echo $'\n'

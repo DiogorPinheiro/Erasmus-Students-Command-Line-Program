@@ -33,7 +33,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 echo $'Introduza o código de uma universidade.\n'
                 grep @ $dados
                 read Cuniversidade
-                while [ $Cuniversidade -gt 19999 ] || [ $Cuniversidade -lt 10000 ] || [ "$(grep $Cuniversidade $dados | cut -d @ -f 1 )" -eq 1 ] ;
+                while [ $Cuniversidade -gt 19999 ] || [ $Cuniversidade -lt 10000 ] || [ "$(grep -c $Cuniversidade $dados)" -ne 1 ] ;
                 do
                     clear
                     grep @ $dados
@@ -49,7 +49,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 echo $'Introduza o código de um professor.\n'
                 grep , $dados
                 read Cprof
-                while [ $Cprof -gt 49999 ] || [ $Cprof -lt 40000 ] || [ "$(grep $Cprof $dados | cut -d , -f 1 )" -eq 1 ] ;
+                while [ $Cprof -gt 49999 ] || [ $Cprof -lt 40000 ] || [ "$(grep -c $Cprof $dados)" -ne 1 ] ;
                 do
                     clear
                     grep , $dados
@@ -112,7 +112,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     clear
                                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                                 fi
-                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep $codDisc $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
                                 do
                                     if [ $codDisc -eq -1 ]
                                     then
@@ -257,7 +257,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     clear
                                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                                 fi
-                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep $codDisc $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
                                 do
                                     if [ $codDisc -eq -1 ]
                                     then

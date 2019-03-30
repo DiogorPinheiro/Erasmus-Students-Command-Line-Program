@@ -5,10 +5,12 @@
 10004@Gogogo@Moscovo
 20000:Dimitri Dimitrov:Universidade Moscovo:Igor Igorov:2:2020:ES:SO
 20001:David Sales:Universidade Beira Interior:Maria Fuentes:2:2020:SO:Fisica:Matemática Computacional 2
-20002:Dingo:Universidade Beira Interior:Maria Fuentes:1:2019:Lógica Computacional
+20002:Dingo:Universidade Beira Interior:Maria Fuentes:1:2019:AED:POO:Lógica Computacional
 20003:David Davidolas:Universidade de Tel Aviv:Igor Igorov:2:2020:Fisica:Base Dados:Teoria da Computação
 30000#Teoria da Computação#2
 30001#Lógica Computacional#1
+30002#POO#1
+30003#AED#1
 30004#Base Dados#2
 30005#Matemática Discreta#2
 30006#Matemática Computacional 2#2

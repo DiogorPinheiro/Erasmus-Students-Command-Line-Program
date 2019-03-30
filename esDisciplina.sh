@@ -19,7 +19,7 @@ read opt
             echo 'Coloque ID da Disciplina'
             read ID
             clear
-            if [ "$(grep $ID $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $ID -gt 39999 ] || [ $ID -lt 30000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
+            if [ "$(grep -c $ID $dados)" -ne 1 ] || [ $ID -gt 39999 ] || [ $ID -lt 30000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
             then
                 clear
                 echo "Erro!! Disciplina Inexistente!"
@@ -78,4 +78,3 @@ read opt
             clear
             ./esDisciplina.sh;;
     esac
-

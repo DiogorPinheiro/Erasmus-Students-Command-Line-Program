@@ -6,7 +6,7 @@ dados="dados.txt"
     echo 'Insira nome do professor'
     read nome
 
-    while grep "$nome" $dados ;  # Verificar se nome colocado já existe na base de dados
+    while grep , <<< $(grep "$nome" $dados) ;  # Verificar se nome colocado já existe na base de dados
     do
         clear
         echo $'Professor já se apresenta na base de dados.'

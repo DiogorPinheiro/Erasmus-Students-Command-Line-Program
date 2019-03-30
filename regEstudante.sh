@@ -27,7 +27,7 @@ dados="dados.txt"
     then
             echo $'\nSe não pretender nenhuma destas e/ou querer criar uma nova pressione -1 a qualquer altura desta parte.\n'
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod $dados | cut -d @ -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -48,7 +48,7 @@ dados="dados.txt"
             ./regUniversidade.sh
             grep @ $dados
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep $cod $dados | cut -d @ -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -73,7 +73,7 @@ dados="dados.txt"
     then    
             echo $'\nCaso não exista o professor desejado pressione -1 para criar.\n'
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1)" -eq 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -93,7 +93,7 @@ dados="dados.txt"
             ./regProfessor.sh
             grep , $dados
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1 )" -eq 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -172,7 +172,7 @@ dados="dados.txt"
                     clear
                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                 fi
-                while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
                 do
                     if [ $cod -eq -1 ]
                     then
@@ -253,7 +253,7 @@ dados="dados.txt"
                         clear
                         echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                     fi
-                    while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep $cod $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ];
+                    while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ];
                     do
 
                         if [ $cod -eq -1 ]
