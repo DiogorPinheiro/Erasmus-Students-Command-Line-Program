@@ -7,14 +7,10 @@ echo "4) Disciplinas"
 echo "5) Voltar"
 read opt
     case $opt in
-        1)  ./esEstudante.sh
-            ./mEstatisticas.sh;;
-        2)  ./esProfessor.sh
-            ./mEstatisticas.sh;;
-        3)  ./esUniversidade.sh
-            ./mEstatisticas.sh;;
-        4)  ./esDisciplina.sh 
-            ./mEstatisticas.sh;;
+        1)  ./esEstudante.sh;;
+        2)  ./esProfessor.sh;;
+        3)  ./esUniversidade.sh;;
+        4)  ./esDisciplina.sh;;
         5)
             echo $'\n'
             clear

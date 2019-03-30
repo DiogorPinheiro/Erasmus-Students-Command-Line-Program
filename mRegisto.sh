@@ -7,14 +7,10 @@ echo "4) Disciplina"
 echo "5) Sair para o Menu Principal"
 read opt
     case $opt in
-        1)  ./regUniversidade.sh
-            ./mRegisto.sh;;
-        2)  ./regProfessor.sh
-            ./mRegisto.sh;;
-        3)  ./regEstudante.sh
-            ./mRegisto.sh;;
-        4)  ./mDisciplina.sh
-            ./mRegisto.sh;;    
+        1)  ./regUniversidade.sh;;
+        2)  ./regProfessor.sh;;
+        3)  ./regEstudante.sh;;
+        4)  ./mDisciplina.sh;;    
         5)
             echo $'\n'
             clear

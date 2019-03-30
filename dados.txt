@@ -20,7 +20,7 @@
 30010#Redes Computadores#1
 30011#SO#2
 30012#ES#2
-30013#'Física'#2
+30013#Física#2
 30014#Algebra#1
 30015#Arquitetura Computadores 1#1
 30016#Estatistica#1
