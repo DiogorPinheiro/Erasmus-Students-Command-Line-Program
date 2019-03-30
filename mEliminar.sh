@@ -16,7 +16,9 @@ read opt
         4)  ./elDisciplina.sh 
             ./mEliminar.sh;;
         5)
-            clear;;
+            echo $'\n'
+            clear
+            ./mPrincipal.sh;;
         *)  echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'

@@ -3,7 +3,7 @@ clear
 dados="dados.txt"
 echo "1) NºAlunos"
 echo "2) NºAlunos por semestre"
-echo "3) Quit"
+echo "3) Voltar"
 read opt
     case $opt in
         1)  clear

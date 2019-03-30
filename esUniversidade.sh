@@ -3,7 +3,7 @@ clear
 dados="dados.txt"
 echo "1) NºUniversidades"
 echo "2) Alunos por universidade"
-echo "3) Quit"
+echo "3) Voltar"
 read opt
     case $opt in
         1)  clear
@@ -38,5 +38,5 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mUniversidade.sh;;
+            ./esUniversidade.sh;;
     esac

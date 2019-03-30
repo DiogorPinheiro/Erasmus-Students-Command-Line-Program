@@ -123,7 +123,9 @@ read opt
             ./edDisciplina.sh $cod 
             ./mEditar.sh;;
         5)
-            clear;;
+            echo $'\n'
+            clear
+            ./mPrincipal.sh;;
 
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand

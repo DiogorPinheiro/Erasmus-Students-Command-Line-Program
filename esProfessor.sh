@@ -5,7 +5,7 @@ echo "1) NºProfessores"
 echo "2) Alunos por professor"
 echo "3) Média de alunos por professor"
 echo "4) Professor com mais alunos"
-echo "5) Quit"
+echo "5) Voltar"
 read opt
     case $opt in
         1)  
@@ -50,38 +50,37 @@ read opt
             ./esProfessor.sh;;
         
         4)
-            Arraytot=()
-            ArrayID=()
+            clears
+            Arraytot=()                                                                 # Array para armazenar numero de alunos por professor
+            ArrayID=()                                                                  # Array para armazenar ID dos professores
             ArrayN=()
-            ID=40000
+            ID=40000                                                                    # Valor inicial do ID
             i=0
-            while [ $(grep -c $ID $dados) -eq 1 ] 
+            while [ $(grep -c $ID $dados) -eq 1 ]                                       # Enquanto existir o ID na base de dados
             do
             
-                ArrayN[$i]=$(grep $ID $dados| cut -d , -f 2)                              # Procurar linhas com esse valo na posição 2 do input de professores
-                echo "Nº de alunos associados ao professor(a) ${ArrayN[$i]}"
-                valor=$(grep -o "${ArrayN[$i]}:" $dados |  wc -l)
-                ArrayID[$i]=$ID
+                ArrayN[$i]=$(grep $ID $dados| cut -d , -f 2)                            # Procurar linhas com esse valor na posição 2 do input de professores
+                valor=$(grep -o "${ArrayN[$i]}:" $dados |  wc -l)                       # Obter número de alunos
+                ArrayID[$i]=$ID                                                         # Inserir valores no array
                 Arraytot[$i]=$valor
-                echo "${Arraytot[$i]}"
-                i=$(($i+1))
-                ID=$(($ID+1))
+                #echo "${Arraytot[$i]}"
+                i=$(($i+1))                                                             
+                ID=$(($ID+1))                                                           # Passar para o ID seguinte
             done
 
-            
-            pos=0
+            pos=0                                                                       # Inicializar valores para obter valor máximo e a sua posição
             max=0
             pmax=-1
-            while [ $i -gt $pos ] ;
-            do
-            if [ $max -lt ${Arraytot[$pos]} ]
-            then
-            max=${Arraytot[$pos]}
-           pmax=$pos
-            fi
-            pos=$(($pos+1))
-            done 
-            echo "O professor com mais alunos é ${ArrayN[$pmax]}"
+            while [ $i -gt $pos ] ; do                                                  # Percorrer lista
+                if [ $max -lt ${Arraytot[$pos]} ]                                       # Se for maior 
+                then                                                
+                    max=${Arraytot[$pos]}
+                    pmax=$pos
+                fi
+                pos=$(($pos+1))
+            done
+            clear 
+            echo "O professor com mais alunos é ${ArrayN[$pmax]} com $max alunos"
         
             echo $'\n\nPressione [ENTER] para avançar.\n'                           
             read rand
@@ -94,7 +93,7 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mProfessor.sh;;
+            ./esProfessor.sh;;
     esac
 
 
