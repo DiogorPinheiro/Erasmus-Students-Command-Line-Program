@@ -10,7 +10,7 @@ read opt
         1) 
             echo $'Introduza um novo nome:\n'
             read nome
-            while grep '#' $dados > grep $nome ;
+            while grep $nome <<< $(grep '#' $dados) ;
             do
                 echo $'Introduza um nome diferente:\n'
                 read nome

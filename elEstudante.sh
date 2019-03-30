@@ -13,11 +13,11 @@ then
     grep -v $numEstEl $dados > temp.txt
     sort -n temp.txt > $dados 
     rm temp.txt
-    echo $'\nPretende apagar novo aluno? [y/n]'
+    clear
+    echo $'Pretende apagar novo aluno? [y/n]'
     read ans
     if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
     then
-        clear
         ./elEstudante.sh
     else
         ./mEliminar.sh

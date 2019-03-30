@@ -24,5 +24,6 @@
 30014#Algebra#1
 30015#Arquitetura Computadores 1#1
 30016#Estatistica#1
+30017#Matemática Computacional 1#2
 40000,Igor Igorov
 40001,Maria Fuentes

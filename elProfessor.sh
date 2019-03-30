@@ -13,11 +13,11 @@ then
     grep -v $numProfEl $dados > temp.txt
     sort -n temp.txt > $dados 
     rm temp.txt
-    echo $'\nPretende apagar novo professor? [y/n]'
+    clear
+    echo $'Pretende apagar novo professor? [y/n]'
     read ans
     if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
     then
-        clear
         ./elProfessor.sh
     else
         ./mEliminar.sh

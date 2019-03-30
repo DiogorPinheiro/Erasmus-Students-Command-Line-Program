@@ -13,11 +13,11 @@ then
     grep -v $numDiscEl $dados > temp.txt
     sort -n temp.txt > $dados 
     rm temp.txt
-    echo $'\nPretende apagar nova Disciplina? [y/n]'
+    clear
+    echo $'Pretende apagar nova Disciplina? [y/n]'
     read ans
     if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
     then
-        clear
         ./elDisciplina.sh
     else
         ./mEliminar.sh

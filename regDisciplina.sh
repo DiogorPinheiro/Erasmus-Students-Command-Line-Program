@@ -2,15 +2,33 @@
 clear
 id=0
 dados="dados.txt"
+
     echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+c.'
+    echo 'Coloque o semestre:'
+    read semestre
+    clear
     echo 'Insira nome da disciplina'
     read nome
-
-    while grep "$nome" $dados ;  # Verificar se nome colocado já existe na base de dados
+    clear
+    while [ $(grep "$nome" <<< $(grep '#' $dados) | cut -d '#' -f 3) -eq $semestre ] ;  # Verificar se nome colocado já existe na base de dados
     do
-        clear
-        echo $'Disciplina já se apresenta na base de dados.'
-        read nome
+            clear
+            echo ""$nome" já se apresenta na base de dados, no mesmo semestre. Para alterar o semestre insira -1."
+            read rand
+            if [ $rand -eq -1 ]
+            then
+                clear
+                echo "Insira um semestre diferente."
+                read semestre
+                while [ $semestre -lt 1 ] || [ $semestre -gt 2 ] ;
+                do
+                    clear
+                    echo "Insira 1 ou 2."
+                    read semestre
+                done
+            else
+                nome=$rand
+            fi
     done
 
     if grep '#' $dados     # Atribuir ID ( Último ID registado + 1)
@@ -21,11 +39,8 @@ dados="dados.txt"
     else
         id=30000
     fi
-    clear
 
-    echo 'Coloque o semestre '
-    read semestre
-
-    echo "$id#$nome#semestre" >> $dados     # Armazenar dados na base de dados
+    echo "$id#$nome#$semestre" >> $dados     # Armazenar dados na base de dados
     sort -n $dados > tmp.txt
     mv tmp.txt $dados
+    ./mRegisto.sh

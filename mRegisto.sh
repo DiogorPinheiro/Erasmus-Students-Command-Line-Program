@@ -10,7 +10,7 @@ read opt
         1)  ./regUniversidade.sh;;
         2)  ./regProfessor.sh;;
         3)  ./regEstudante.sh;;
-        4)  ./mDisciplina.sh;;    
+        4)  ./regDisciplina.sh;;    
         5)
             echo $'\n'
             clear
