@@ -52,28 +52,37 @@ read opt
         4)
             Arraytot=()
             ArrayID=()
+            ArrayN=()
             ID=40000
-            while ! grep -q $ID $dados;
+            i=0
+            while [ $(grep -c $ID $dados) -eq 1 ] 
             do
             
-                nome=$(grep $ID $dados| cut -d , -f 2)                              # Procurar linhas com esse valo na posição 2 do input de professores
-                echo "Nº de alunos associados ao professor(a) $nome"
-                valor=$(grep -o "$nome:" $dados |  wc -l)
-                ArrayID+=$ID
-                Arraytot+=$valor
+                ArrayN[$i]=$(grep $ID $dados| cut -d , -f 2)                              # Procurar linhas com esse valo na posição 2 do input de professores
+                echo "Nº de alunos associados ao professor(a) ${ArrayN[$i]}"
+                valor=$(grep -o "${ArrayN[$i]}:" $dados |  wc -l)
+                ArrayID[$i]=$ID
+                Arraytot[$i]=$valor
+                echo "${Arraytot[$i]}"
+                i=$(($i+1))
                 ID=$(($ID+1))
             done
-            echo $ID
+
+            
             pos=0
-            max=${Arraytot[0]}
-            for n in "${ArrayTot[@]}" ; do
-                if $n > $max 
-                then
-                    max=$n ;
-                    pos=n;
-                fi
-            done
-            echo $max
+            max=0
+            pmax=-1
+            while [ $i -gt $pos ] ;
+            do
+            if [ $max -lt ${Arraytot[$pos]} ]
+            then
+            max=${Arraytot[$pos]}
+           pmax=$pos
+            fi
+            pos=$(($pos+1))
+            done 
+            echo "O professor com mais alunos é ${ArrayN[$pmax]}"
+        
             echo $'\n\nPressione [ENTER] para avançar.\n'                           
             read rand
             echo $'\n'
