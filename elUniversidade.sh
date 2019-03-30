@@ -3,7 +3,7 @@ clear
 dados="dados.txt"
 if grep @ $dados ;
 then
-    echo "Qual deseja eliminar?"
+    echo $'\nQual deseja eliminar?'
     read numUniEl
     while [ $numUniEl -lt 10000 ] || [ $numUniEl -gt 19999 ] || [ "$(grep -c $numUniEl $dados)" -lt 1 ] ;
     do 

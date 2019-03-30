@@ -192,6 +192,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     echo "$newvalue" >> tmp.txt
                     sort -n tmp.txt > $dados
                     rm tmp.txt
+                    ./edEstudante $cod
                 else
                     clear
                     ./edEstudante.sh $cod
@@ -218,7 +219,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 sort -n tmp1.txt > $dados
                 rm tmp1.txt
                 rm tmp.txt
-                clear
+                ./edEstudante $cod
                 ;;
 
             6)  clear
@@ -335,6 +336,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     echo "$newvalue" >> tmp.txt
                     sort -n tmp.txt > $dados
                     rm tmp.txt
+                    ./edEstudante $cod
                 ;;
 
             7)  

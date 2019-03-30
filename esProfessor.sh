@@ -19,7 +19,8 @@ read opt
             ./esProfessor.sh;;
         2)  
             clear
-            echo 'Coloque ID do Professor'
+            grep , $dados
+            echo $'\nColoque ID do Professor'
             read ID
             if [ grep $ID $dados -eq -1 ] || [ $ID -gt 49999 ] || [ $ID -lt 40000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
             then

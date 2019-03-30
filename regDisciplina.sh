@@ -43,4 +43,3 @@ dados="dados.txt"
     echo "$id#$nome#$semestre" >> $dados     # Armazenar dados na base de dados
     sort -n $dados > tmp.txt
     mv tmp.txt $dados
-    ./mRegisto.sh

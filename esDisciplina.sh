@@ -3,7 +3,7 @@ clear
 dados="dados.txt"
 echo "1) NºDisciplinas"
 echo "2) Alunos por Disciplina"
-echo "3) Disciplinas com mais alunos"
+echo "3) Disciplina com mais alunos"
 echo "4) Voltar"
 read opt
     case $opt in
@@ -13,13 +13,13 @@ read opt
             echo $'\n\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
-            clear
-            ./esDisciplinas.sh;;
+            ./esDisciplina.sh;;
         2)  clear
+            grep '#' $dados
             echo 'Coloque ID da Disciplina'
             read ID
             clear
-            if [ grep $ID $dados -eq -1 ] || [ $ID -gt 39999 ] || [ $ID -lt 30000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
+            if [ "$(grep $ID $dados | cut -d '#' -f 1 )" -eq 1 ] || [ $ID -gt 39999 ] || [ $ID -lt 30000 ]; # Se ID não existe na base de dados ou o número não está dentro do intervalo reservado
             then
                 clear
                 echo "Erro!! Disciplina Inexistente!"
@@ -32,8 +32,8 @@ read opt
             echo $'\n\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
-            clear
-            ./esDisciplinas.sh;;
+            ./esDisciplina.sh
+            ;;
         3)
             clear
             Arraytot=()                                                                 # Array para armazenar numero de alunos por professor
@@ -70,14 +70,12 @@ read opt
             echo $'\n\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
-            clear
-            ./esDisciplinas.sh;;
-        4)  clear
-            ./mEstatisticas.sh;;
+            ./esDisciplina.sh;;
+        4)  ./mEstatisticas.sh;;
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'           # Evitar outros inputs não existentes no menu
             read rand
             echo $'\n'
             clear
-            ./esDisciplinas.sh;;
+            ./esDisciplina.sh;;
     esac
 
