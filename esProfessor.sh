@@ -61,7 +61,7 @@ read opt
             do
             
                 ArrayN[$i]=$(grep $ID $dados| cut -d , -f 2)                            # Procurar linhas com esse valor na posição 2 do input de professores
-                valor=$(grep -o "${ArrayN[$i]}:" $dados |  wc -l)                       # Obter número de alunos
+                valor=$(grep -o ":${ArrayN[$i]}" $dados |  wc -l)                       # Obter número de alunos
                 ArrayID[$i]=$ID                                                         # Inserir valores no array
                 Arraytot[$i]=$valor
                 #echo "${Arraytot[$i]}"

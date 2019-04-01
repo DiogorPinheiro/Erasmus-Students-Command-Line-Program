@@ -25,7 +25,7 @@ read opt
             else
                 nome=$(grep $ID $dados| cut -d @ -f 2)                              # Procurar linhas com esse valo na posição 2 do input de universidades
                 echo "Nº de alunos associados inscritos na universidade $nome"
-                valor=$(grep -o "$nome:" $dados |  wc -l)
+                valor=$(grep -o ":$nome" $dados |  wc -l)
                 echo $valor            
             fi
             echo $'\n\nPressione [ENTER] para avançar.\n'
