@@ -43,12 +43,12 @@ read opt
             i=0
             while [ $(grep -c $ID $dados) -eq 1 ]                                       # Enquanto existir o ID na base de dados
             do
-            
+            echo "test2"
                 ArrayN[$i]=$(grep $ID $dados| cut -d '#' -f 2)                            # Procurar linhas com esse valor na posição 2 do input de professores
-                valor=$(grep -o "${ArrayN[$i]}:" $dados |  wc -l)                       # Obter número de alunos
+                valor=$(grep -c ":${ArrayN[$i]}" $dados)                       # Obter número de alunos
                 ArrayID[$i]=$ID                                                         # Inserir valores no array
                 Arraytot[$i]=$valor
-                #echo "${Arraytot[$i]}"
+                echo " ${ArrayN[$i]} -> ${Arraytot[$i]}"
                 i=$(($i+1))                                                             
                 ID=$(($ID+1))                                                           # Passar para o ID seguinte
             done
