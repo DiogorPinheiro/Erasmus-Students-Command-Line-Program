@@ -27,7 +27,7 @@ dados="dados.txt"
     then
             echo $'\nSe não pretender nenhuma destas e/ou querer criar uma nova pressione -1 a qualquer altura desta parte.\n'
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -48,7 +48,7 @@ dados="dados.txt"
             ./regUniversidade.sh
             grep @ $dados
             read cod
-            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
+            while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -73,7 +73,7 @@ dados="dados.txt"
     then    
             echo $'\nCaso não exista o professor desejado pressione -1 para criar.\n'
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -93,7 +93,7 @@ dados="dados.txt"
             ./regProfessor.sh
             grep , $dados
             read cod
-            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ;
+            while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
                 if [ $cod -eq -1 ]
@@ -115,25 +115,19 @@ dados="dados.txt"
     clear
     echo $'\nEm que semestre vai frequentar a UBI? [1/2]\n'
     read sem
-    while [ $sem -lt 1 ] || [ $sem -gt 2 ];
+    while [ $sem -lt 1 ] || [ $sem -gt 2 ]; #verificar a escolha do semestre entre 1 e 2
     do
         clear
         echo $'\nEscolha um semestre válido. [1/2]\n'
         read sem
     done
 
-    #tempS=$(grep $nome $dados | cut -d : -f 5)
-    #tempA=$(grep $nome $dados | cut -d : -f 6)
-    #if [ $tempS -eq $sem ] && [ $tempA -eq $ano ]
-    #then
-    #    echo $'\nAluno já se encontra registado no mesmo ano e semestre'
-    #fi
     clear
     echo $'\nEm que ano vai frequentar a UBI?\n'
     read ano
     anoAtual=$(date +%Y)
     mesAtual=$(date +%m)
-    while [ $anoAtual -gt $ano ]
+    while [ $anoAtual -gt $ano ] 
     do
         clear
         echo $'\nEscolha um ano válido, ou seja, maior ou igual a '
@@ -181,7 +175,7 @@ dados="dados.txt"
                     grep "#" $dados
                     echo $'\nEscolha um código existente e de uma disciplina não repetida.'
                     read cod
-                    for i in "${!verificacao[@]}" ;
+                    for i in "${!verificacao[@]}" ; #teste array vai conter todas as disciplinas já adicionadas para evitar adicionar repetidas
                     do
                         if [ $cod -eq ${verificacao[$i]} ]
                         then
@@ -264,7 +258,7 @@ dados="dados.txt"
                         grep "#" $dados
                         echo $'\nEscolha um código existente.'
                         read cod
-                        for i in "${!verificacao[@]}" ;
+                        for i in "${!verificacao[@]}" ; #teste array vai conter todas as disciplinas já adicionadas para evitar adicionar repetidas
                         do
                             if [ $cod -eq ${verificacao[$i]} ]
                             then
@@ -329,9 +323,9 @@ dados="dados.txt"
             fi
         fi
         verificacao+=($cod)
-        if [ $nDisc -ne 1 ]
+        if [ $nDisc -ne 1 ] #concatenar disciplinas da forma que vai ser adicionado ao ficheiro
         then
-            disciplinas=":$(grep $cod $dados | cut -d '#' -f 2)${disciplinas}"
+            disciplinas=":$(grep $cod $dados | cut -d '#' -f 2)${disciplinas}" 
         else
             disciplinas="$(grep $cod $dados | cut -d '#' -f 2)${disciplinas}"
         fi

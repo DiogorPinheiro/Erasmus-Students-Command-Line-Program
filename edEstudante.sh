@@ -33,7 +33,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 echo $'Introduza o código de uma universidade.\n'
                 grep @ $dados
                 read Cuniversidade
-                while [ $Cuniversidade -gt 19999 ] || [ $Cuniversidade -lt 10000 ] || [ "$(grep -c $Cuniversidade $dados)" -ne 1 ] ;
+                while [ $Cuniversidade -gt 19999 ] || [ $Cuniversidade -lt 10000 ] || [ "$(grep -c $Cuniversidade $dados)" -ne 1 ] ; #verificar o código na base de dados
                 do
                     clear
                     grep @ $dados
@@ -49,7 +49,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 echo $'Introduza o código de um professor.\n'
                 grep , $dados
                 read Cprof
-                while [ $Cprof -gt 49999 ] || [ $Cprof -lt 40000 ] || [ "$(grep -c $Cprof $dados)" -ne 1 ] ;
+                while [ $Cprof -gt 49999 ] || [ $Cprof -lt 40000 ] || [ "$(grep -c $Cprof $dados)" -ne 1 ] ; #verificar o código na base de dados
                 do
                     clear
                     grep , $dados
@@ -112,7 +112,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     clear
                                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                                 fi
-                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ; #verificar o código na base de dados
                                 do
                                     if [ $codDisc -eq -1 ]
                                     then
@@ -122,7 +122,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     grep "#" $dados
                                     echo $'\nEscolha um código existente e de uma disciplina não repetida.'
                                     read codDisc
-                                    for i in "${!verificacao[@]}" ;
+                                    for i in "${!verificacao[@]}" ; #array de verificação para certificar que não existem disciplinas repetidas
                                     do
                                         if [ $codDisc -eq ${verificacao[$i]} ]
                                         then
@@ -179,7 +179,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                             done
                         
                         verificacao+=($codDisc)
-                        if [ $nDisc -ne 1 ]
+                        if [ $nDisc -ne 1 ] #concatenar disciplinas para serem adicionadas ao ficheiro corretamente
                         then
                             disciplinas=":$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"
                         else
@@ -203,7 +203,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 echo $'\nEm que ano vai frequentar a UBI?\n'
                 read ano
                 anoAtual=$(date +%Y)
-                while [ $anoAtual -gt $ano ]
+                while [ $anoAtual -gt $ano ] #ano tem de ser >= anoAtual
                 do
                     clear
                     echo $'\nEscolha um ano válido, ou seja, maior ou igual a '
@@ -257,7 +257,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     clear
                                     echo "Escolha uma disciplina associada ao semestre que deseja frequentar e que não esteja repetida."
                                 fi
-                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
+                                while [ $codDisc -gt 39999 ] || [ $codDisc -lt 30000 ] || [ "$(grep -c $codDisc $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ] ; #verificar o código na base de dados
                                 do
                                     if [ $codDisc -eq -1 ]
                                     then
@@ -294,7 +294,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                                     fi
                                     clear
                                 done
-                                for i in "${!verificacao[@]}" ;
+                                for i in "${!verificacao[@]}" ; #array de verificação para certificar que a disciplina não é repetida
                                 do
                                     if [ $codDisc -eq ${verificacao[$i]} ]
                                     then
