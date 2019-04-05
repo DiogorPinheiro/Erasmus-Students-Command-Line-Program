@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-echo "1) Registo/Editar"
+echo "1) Registo"
 echo "2) Alterar Dados"
 echo "3) Visualizar Dados"
 echo "4) Relatórios"

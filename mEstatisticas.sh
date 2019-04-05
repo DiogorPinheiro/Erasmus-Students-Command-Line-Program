@@ -21,3 +21,5 @@ read opt
             clear
             ./mEstatisticas.sh;;
     esac
+
+    
