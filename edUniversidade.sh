@@ -4,6 +4,7 @@ dados="dados.txt"
 cod=$1
 echo "1) Nome"
 echo "2) País"
+echo "3) Sair"
 read opt
     case $opt in
 
@@ -16,12 +17,10 @@ read opt
                 echo $'Introduza um nome diferente:\n'
                 read nome
             done
-            pais=$(grep $cod $dados | cut -d @ -f 3)
-            grep -v $cod $dados > tmp1.txt
-            echo "$cod@$nome@$pais" >> tmp1.txt
-            sort -n tmp1.txt > $dados
-            rm tmp1.txt
-            ;;
+            nomeAntigo=$(grep $cod $dados | cut -d @ -f 2)
+            sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' $dados #altera todas as ocorrências do nome
+            sed -i 's/'"@$nomeAntigo"'/'"@$nome"'/g' $dados
+            ./edUniversidade.sh $cod;;
 
         2) 
             clear
@@ -32,12 +31,15 @@ read opt
             echo "$cod@$nome@$pais" >> tmp1.txt
             sort -n tmp1.txt > $dados
             rm tmp1.txt
-            ;;
+            ./edUniversidade.sh $cod;;
+
+        3)
+            exit;;
 
         *) echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'
             clear
-            ./mEditar.sh;;
+            ./edUniversidade.sh $cod;;
 
     esac

@@ -28,7 +28,8 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 done
                 sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' $dados
                 echo $'\n'
-                ./edEstudante $cod;;
+                ./edEstudante.sh $cod
+                ;;
             2)  clear
                 echo $'Introduza o código de uma universidade.\n'
                 grep @ $dados
@@ -40,11 +41,16 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     echo $'\nEscolha um código existente.\n'
                     read Cuniversidade
                 done
-                nome=$(grep $Cuniversidade $dados | cut -d @ -f 3)
-                nomeAntigo=$(grep $cod $dados | cut -d @ -f 3)
-                sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' $dados
-                echo $'\n'
-                ./edEstudante $cod;;
+                nome=$(grep $Cuniversidade $dados | cut -d @ -f 2)
+                nomeAntigo=$(grep $cod $dados | cut -d : -f 3)
+                grep $cod $dados > tmp.txt
+                sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' tmp.txt
+                grep -v $cod $dados > tmp1.txt
+                cat tmp.txt >> tmp1.txt
+                sort -n tmp1.txt > $dados
+                rm tmp1.txt
+                rm tmp.txt
+                ./edEstudante.sh $cod;;
             3)  clear
                 echo $'Introduza o código de um professor.\n'
                 grep , $dados
@@ -59,14 +65,14 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
 
                 nome=$(grep $Cprof $dados | cut -d , -f 2)
                 nomeAntigo=$(grep $cod $dados | cut -d , -f 2)
-                rm tmp.txt
-                grep $cod $dados > tmp.txt | sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' tmp.txt
+                grep $cod $dados > tmp.txt
+                sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' tmp.txt
                 grep -v $cod $dados > tmp1.txt
                 cat tmp.txt >> tmp1.txt
                 sort -n tmp1.txt > $dados
                 rm tmp1.txt
                 rm tmp.txt
-                ./edEstudante $cod;;
+                ./edEstudante.sh $cod;;
 
             4)  clear
                 echo $'\nAVISO! Se alterar o semestre associado a este registo vai perder todas as disciplinas associadas ao mesmo e vai ter que adicionar novas. Continuar? [y/n]'
@@ -192,7 +198,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     echo "$newvalue" >> tmp.txt
                     sort -n tmp.txt > $dados
                     rm tmp.txt
-                    ./edEstudante $cod
+                    ./edEstudante.sh $cod
                 else
                     clear
                     ./edEstudante.sh $cod
@@ -206,20 +212,19 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                 while [ $anoAtual -gt $ano ] #ano tem de ser >= anoAtual
                 do
                     clear
-                    echo $'\nEscolha um ano válido, ou seja, maior ou igual a '
-                    echo "$anoAtual"
-                    echo $'\n'
+                    echo $'Escolha um ano válido, ou seja, maior ou igual a $anoAtual'
                     read ano
                 done
                 temp=$(grep $cod $dados | cut -d : -f 6)
                 rm tmp.txt
-                grep $cod $dados > tmp.txt | sed -i 's/'$temp'/'$ano'/g' tmp.txt
+                grep $cod $dados > tmp.txt
+                sed -i 's/'":$temp"'/'":$ano"'/g' tmp.txt
                 grep -v $cod $dados > tmp1.txt
                 cat tmp.txt >> tmp1.txt
                 sort -n tmp1.txt > $dados
                 rm tmp1.txt
                 rm tmp.txt
-                ./edEstudante $cod
+                ./edEstudante.sh $cod
                 ;;
 
             6)  clear
@@ -336,7 +341,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                     echo "$newvalue" >> tmp.txt
                     sort -n tmp.txt > $dados
                     rm tmp.txt
-                    ./edEstudante $cod
+                    ./edEstudante.sh $cod
                 ;;
 
             7)  

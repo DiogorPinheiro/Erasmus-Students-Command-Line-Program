@@ -11,8 +11,7 @@ then
         read numDiscEl
     done
     nome=$(grep $numDiscEl $dados | cut -d '#' -f 2)
-    nome=":${nome}"
-    sed -i 's/'"$nome"'/'""'/g' $dados
+    sed -i 's/'":$nome"'/'""'/g' $dados
     grep -v $numDiscEl $dados > temp.txt
     sort -n temp.txt > $dados 
     rm temp.txt

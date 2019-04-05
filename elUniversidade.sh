@@ -10,6 +10,8 @@ then
         echo "Este numero não é possivel, tente de novo:"
         read numUniEl
     done
+    nome=$(grep $numUniEl $dados | cut -d @ -f 2)
+    sed -i 's/'":$nome"'/'":Indefinido"'/g' $dados
     grep -v $numUniEl $dados > temp.txt
     sort -n temp.txt > $dados 
     rm temp.txt

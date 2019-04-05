@@ -37,7 +37,7 @@ read opt
             then   
                 echo $'Selecione o professor que pretende editar, introduzindo o código correspondente:\n'
                 read cod
-                    while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1 )" -eq 1 ] ;
+                    while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep $cod $dados | cut -d , -f 1)" -eq 1 ] ;
                     do
                         clear
                         grep , $dados
@@ -53,11 +53,12 @@ read opt
             fi
             clear
             nome=$(grep $cod $dados | cut -d , -f 2)
-            echo "Pretende alterar o nome do professor '$nome'? [y/n] "
-            if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
+            echo "Pretende alterar o nome do professor $nome? [y/n] "
+            read ans
+            if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
             then
                 echo $'Introduza um novo nome:\n'
-                read novo
+                read nome
                 while grep "$nome" $dados ;  # Verificar se nome colocado já existe na base de dados
                 do
                     clear
@@ -69,13 +70,8 @@ read opt
                 exit
             fi
             nomeAntigo=$(grep $cod $dados | cut -d , -f 2)
-            rm tmp.txt
-            grep $cod $dados > tmp.txt | sed -i 's/'"$nomeAntigo"'/'"$nome"'/g' tmp.txt
-            grep -v $cod $dados > tmp1.txt
-            cat tmp.txt >> tmp1.txt
-            sort -n tmp1.txt > $dados
-            rm tmp1.txt
-            rm tmp.txt
+            sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' $dados #altera todas as ocorrências do nome
+            sed -i 's/'",$nomeAntigo"'/'",$nome"'/g' $dados
             ./mEditar.sh;;
         3)  
             clear

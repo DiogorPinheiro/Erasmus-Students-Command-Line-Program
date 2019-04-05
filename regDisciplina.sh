@@ -6,6 +6,12 @@ dados="dados.txt"
     echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+c.'
     echo 'Coloque o semestre:'
     read semestre
+    while [ $semestre -gt 2 ] || [ $semestre -lt 1 ];
+    do
+        clear
+        echo $'Introduza 1 ou 2.\n'
+        read semestre
+    done
     clear
     echo 'Insira nome da disciplina'
     read nome
@@ -27,7 +33,7 @@ dados="dados.txt"
                     read semestre
                 done
             else
-                nome=$rand
+                nome="$rand"
             fi
     done
 

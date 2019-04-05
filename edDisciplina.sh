@@ -19,7 +19,7 @@ read opt
             nomeAntigo=$(grep $1 $dados | cut -d '#' -f 2)
             sed -i 's/'"#$nomeAntigo"'/'"#$nome"'/g' $dados #altera o nome da disciplina no registo da mesma
             sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' $dados #altera o nome da disciplina nos registos dos alunos
-            ;;
+            ./edDisciplina.sh $cod;;
 
         2)  
             sem=$(grep $cod $dados | cut -d '#' -f 3) #semestre atual
@@ -34,7 +34,7 @@ read opt
             fi
             nome=$(grep $cod $dados | cut -d '#' -f 2) #procura o nome da mesma
             sed -i 's/'":$nome"'/'""'/g' $dados #remove a mesma do registo do aluno, já que não está incluída nesse semestre
-            ;;
+             ./edDisciplina.sh $cod;;
 
         3)  exit
             ;;
@@ -43,6 +43,6 @@ read opt
             read rand
             echo $'\n'
             clear
-            ./mEditar.sh;;
+            ./edDisciplina.sh $cod;;
 
     esac

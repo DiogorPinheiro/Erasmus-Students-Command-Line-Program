@@ -14,7 +14,7 @@ read opt
         5)
             echo $'\n'
             clear
-            ./mPrincipal.sh;;
+            ./mAltera.sh;;
         *)  echo $'\n\nOpção inválida.\nPressione [ENTER] para avançar.\n'
             read rand
             echo $'\n'

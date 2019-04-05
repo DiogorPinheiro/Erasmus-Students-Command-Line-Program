@@ -8,13 +8,13 @@ echo "5) Sair para o Menu Principal"
 read opt
     case $opt in
         1)  ./regUniversidade.sh
-            ./mRegisto;;
+            ./mRegisto.sh;;
         2)  ./regProfessor.sh
-            ./mRegisto;;
+            ./mRegisto.sh;;
         3)  ./regEstudante.sh
-            ./mRegisto;;
+            ./mRegisto.sh;;
         4)  ./regDisciplina.sh
-            ./mRegisto;;    
+            ./mRegisto.sh;;    
         5)
             echo $'\n'
             clear

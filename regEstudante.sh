@@ -55,6 +55,7 @@ dados="dados.txt"
                 then
                     ./regUniversidade.sh
                 fi
+                clear
                 grep @ $dados
                 echo $'\nEscolha um código existente.'
                 read cod
