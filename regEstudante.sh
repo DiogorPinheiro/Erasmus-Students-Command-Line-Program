@@ -43,7 +43,7 @@ dados="dados.txt"
         clear
         echo $'\nNão existem universidades no ficheiro, deseja criar uma? [y/n]'
         read ans
-        if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
+        if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
         then
             ./regUniversidade.sh
             grep @ $dados
@@ -51,7 +51,7 @@ dados="dados.txt"
             while [ $cod -gt 19999 ] || [ $cod -lt 10000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
-                if [ $cod -eq -1 ]
+                if [ $cod -eq -1 ] || [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
                 then
                     ./regUniversidade.sh
                 fi
@@ -89,7 +89,7 @@ dados="dados.txt"
         clear
         echo $'\nNão existem professores no ficheiro, deseja criar um registo? [y/n]'
         read ans
-        if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
+        if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
         then
             ./regProfessor.sh
             grep , $dados
@@ -97,7 +97,7 @@ dados="dados.txt"
             while [ $cod -gt 49999 ] || [ $cod -lt 40000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] ; #verificação do código na base de dados
             do
                 clear
-                if [ $cod -eq -1 ]
+                if [ $cod -eq -1 ] || [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
                 then
                     ./regProfessor.sh
                 fi
@@ -159,7 +159,6 @@ dados="dados.txt"
             echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
             grep '#' $dados
             read cod
-            echo "Lala"
             while [ $flag -lt 0 ] || [ $flagD -lt 0 ] ;
             do
                 if [ $flag -eq -2 ] || [ $flagD -eq -2 ] ;
@@ -235,7 +234,7 @@ dados="dados.txt"
             clear
             echo $'\nNão existem disciplinas no ficheiro, deseja criar um registo? [y/n]\nOBS: Podem ser criadas mais disciplinas se introduzir -1'
             read ans
-            if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] || [ $ans = -1 ] ;
+            if [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
             then
                 ./regDisciplina.sh
                 echo $'\nSelecione uma disciplina introduzindo o código da mesma. Se pretender criar alguma introduza -1.\n'
@@ -251,7 +250,7 @@ dados="dados.txt"
                     while [ $cod -gt 39999 ] || [ $cod -lt 30000 ] || [ "$(grep -c $cod $dados)" -ne 1 ] || [ $flag -eq -2 ] || [ $flagD -eq -2 ];
                     do
 
-                        if [ $cod -eq -1 ]
+                        if [ $cod -eq -1 ] || [ $ans = "y" ] || [ $ans = "yes" ] || [ $ans = "Y" ] || [ $ans = "YES" ] || [ $ans = "yEs" ] || [ $ans = "yES" ] || [ $ans = "yeS" ] || [ $ans = "Yes" ] || [ $ans = "YeS" ] ;
                         then
                             ./regDisciplina.sh
                         fi
