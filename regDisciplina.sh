@@ -6,7 +6,7 @@ dados="dados.txt"
     echo 'Se pretender voltar atrás a qualquer altura basta pressionar CTRL+c.'
     echo 'Coloque o semestre:'
     read semestre
-    while [ $semestre -gt 2 ] || [ $semestre -lt 1 ];
+    while [ $semestre -gt 2 ] || [ $semestre -lt 1 ] ; #certificar de que o semestre é 1 ou 2
     do
         clear
         echo $'Introduza 1 ou 2.\n'

@@ -18,8 +18,8 @@ read opt
                 read nome
             done
             nomeAntigo=$(grep $cod $dados | cut -d @ -f 2)
-            sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' $dados #altera todas as ocorrências do nome
-            sed -i 's/'"@$nomeAntigo"'/'"@$nome"'/g' $dados
+            sed -i 's/'":$nomeAntigo"'/'":$nome"'/g' $dados #altera todas as ocorrências do nome nos estudantes
+            sed -i 's/'"@$nomeAntigo"'/'"@$nome"'/g' $dados #altera o nome da universidade
             ./edUniversidade.sh $cod;;
 
         2) 

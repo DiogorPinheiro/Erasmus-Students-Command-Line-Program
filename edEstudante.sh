@@ -332,7 +332,7 @@ nomeAntigo=$(grep $cod $dados | cut -d : -f 2) # Procurar o nome antigo para apr
                         then
                             disciplinas=":$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"
                         else
-                            disciplinas="$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"
+                            disciplinas="$(grep $codDisc $dados | cut -d '#' -f 2)${disciplinas}"  #concatenar a informação toda
                         fi
                         nDisc=$(($nDisc-1))
                     done
