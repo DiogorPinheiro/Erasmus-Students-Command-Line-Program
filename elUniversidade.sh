@@ -5,15 +5,15 @@ if grep @ $dados ;
 then
     echo $'\nQual deseja eliminar?'
     read numUniEl
-    while [ $numUniEl -lt 10000 ] || [ $numUniEl -gt 19999 ] || [ "$(grep -c $numUniEl $dados)" -lt 1 ] ;
+    while [ $numUniEl -lt 10000 ] || [ $numUniEl -gt 19999 ] || [ "$(grep -c $numUniEl $dados)" -lt 1 ] ;   #Verificar se o número existe
     do 
         echo "Este numero não é possivel, tente de novo:"
         read numUniEl
     done
     nome=$(grep $numUniEl $dados | cut -d @ -f 2)
     sed -i 's/'":$nome"'/'":Indefinido"'/g' $dados
-    grep -v $numUniEl $dados > temp.txt
-    sort -n temp.txt > $dados 
+    grep -v $numUniEl $dados > temp.txt                     # Todas as linhas que não correspondem ao número indicado passam para um ficheiro temporário
+    sort -n temp.txt > $dados                            # Introduzir ordenadamente no ficheiro de dados
     rm temp.txt
     clear
     echo $'Pretende apagar nova Universidade? [y/n]'

@@ -11,9 +11,9 @@ then
         read numProfEl
     done
     nome=$(grep $numProfEl $dados | cut -d , -f 2)
-    sed -i 's/'":$nome"'/'":Indefinido"'/g' $dados
-    grep -v $numProfEl $dados > temp.txt
-    sort -n temp.txt > $dados 
+    sed -i 's/'":$nome"'/'":Indefinido"'/g' $dados  
+    grep -v $numProfEl $dados > temp.txt     # Todas as linhas que não correspondem ao número indicado passam para um ficheiro temporário
+    sort -n temp.txt > $dados                # Introduzir ordenadamente no ficheiro de dados
     rm temp.txt
     clear
     echo $'Pretende apagar novo professor? [y/n]'
